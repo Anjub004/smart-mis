@@ -1,0 +1,241 @@
+employee_id,name,branch,department,designation,join_date
+DM1001,Sameer Verma,Powai,Store Operations,Associate,2025-07-14
+DM1002,Farhan Sharma,Andheri,Merchandising,Associate,2020-05-13
+DM1003,Deepa Iyer,Navi Mumbai,Maintenance,Associate,2019-06-18
+DM1004,Deepa Khan,Powai,HR,Senior Associate,2021-06-28
+DM1005,Sanya Rao,Powai,Store Operations,Senior Associate,2017-11-02
+DM1006,Riya Iyer,Andheri,Store Operations,Associate,2026-02-18
+DM1007,Rohan Khan,Navi Mumbai,IT Support,Senior Associate,2020-01-29
+DM1008,Harsh Deshmukh,Powai,HR,Supervisor,2020-01-06
+DM1009,Arjun Deshmukh,Navi Mumbai,Store Operations,Senior Associate,2024-07-04
+DM1010,Gauri Rao,Thane,Store Operations,Assistant Manager,2025-07-20
+DM1011,Tanvi Rao,Powai,Store Operations,Manager,2020-01-14
+DM1012,Vidya Pawar,Andheri,Store Operations,Associate,2020-08-12
+DM1013,Akash Gupta,Mumbai Central,Finance,Associate,2018-01-25
+DM1014,Jatin Chavan,Powai,Finance,Associate,2019-02-10
+DM1015,Zoya Rao,Powai,HR,Senior Associate,2021-09-11
+DM1016,Akash Shah,Thane,Store Operations,Associate,2022-02-19
+DM1017,Sneha Sharma,Thane,HR,Associate,2018-11-28
+DM1018,Jatin Rao,Mumbai Central,Store Operations,Associate,2020-07-31
+DM1019,Rekha Pillai,Navi Mumbai,Finance,Associate,2026-05-21
+DM1020,Arjun Khan,Mumbai Central,Maintenance,Associate,2020-01-11
+DM1021,Suresh Verma,Navi Mumbai,IT Support,Associate,2017-03-04
+DM1022,Aarav Nair,Andheri,Store Operations,Associate,2017-01-15
+DM1023,Manav Chavan,Thane,IT Support,Senior Associate,2018-10-04
+DM1024,Ananya Bhatt,Navi Mumbai,Store Operations,Associate,2022-05-24
+DM1025,Ishita Chavan,Thane,Maintenance,Senior Associate,2015-09-04
+DM1026,Imran Joshi,Andheri,Store Operations,Senior Associate,2020-01-05
+DM1027,Sanya Pawar,Andheri,Store Operations,Associate,2025-12-14
+DM1028,Arjun Menon,Powai,Finance,Assistant Manager,2016-11-24
+DM1029,Aditi Iyer,Powai,Merchandising,Associate,2026-06-22
+DM1030,Manav Iyer,Navi Mumbai,Maintenance,Senior Associate,2021-12-28
+DM1031,Lata Shah,Andheri,Merchandising,Senior Associate,2020-05-15
+DM1032,Neha Menon,Powai,HR,Assistant Manager,2026-02-19
+DM1033,Deepa Khan,Navi Mumbai,Maintenance,Senior Associate,2016-08-07
+DM1034,Riya Sharma,Mumbai Central,Finance,Associate,2022-05-02
+DM1035,Harsh Khan,Andheri,Store Operations,Senior Associate,2021-03-11
+DM1036,Lata Deshmukh,Mumbai Central,HR,Associate,2024-01-22
+DM1037,Ishita Verma,Thane,Store Operations,Senior Associate,2024-02-12
+DM1038,Kiran Fernandes,Thane,Store Operations,Associate,2023-11-24
+DM1039,Kunal Gupta,Powai,Store Operations,Senior Associate,2019-09-18
+DM1040,Chirag Verma,Andheri,Merchandising,Associate,2016-05-23
+DM1041,Uday Menon,Thane,Finance,Associate,2019-07-13
+DM1042,Chirag Khan,Powai,Store Operations,Senior Associate,2018-07-27
+DM1043,Sanya Khan,Andheri,Store Operations,Senior Associate,2022-06-30
+DM1044,Ananya Menon,Thane,Store Operations,Senior Associate,2019-05-03
+DM1045,Zoya Gupta,Andheri,Store Operations,Associate,2020-06-03
+DM1046,Arjun Chavan,Mumbai Central,Merchandising,Senior Associate,2024-10-08
+DM1047,Sneha Khan,Mumbai Central,Merchandising,Associate,2026-06-27
+DM1048,Neha Kulkarni,Powai,Store Operations,Assistant Manager,2025-01-02
+DM1049,Rohan Menon,Powai,Store Operations,Associate,2024-10-05
+DM1050,Sanya Mehta,Navi Mumbai,Store Operations,Assistant Manager,2025-02-05
+DM1051,Rekha Pillai,Navi Mumbai,Store Operations,Associate,2023-03-07
+DM1052,Sameer Deshmukh,Andheri,Store Operations,Supervisor,2017-06-23
+DM1053,Yash Deshmukh,Andheri,Store Operations,Senior Associate,2025-03-01
+DM1054,Jatin Sharma,Thane,IT Support,Associate,2023-03-14
+DM1055,Zoya Gupta,Navi Mumbai,Store Operations,Associate,2022-05-16
+DM1056,Omkar Patil,Powai,Store Operations,Associate,2021-05-26
+DM1057,Chirag Pawar,Mumbai Central,Store Operations,Associate,2024-11-13
+DM1058,Meera Chavan,Powai,IT Support,Associate,2018-09-12
+DM1059,Yash Fernandes,Navi Mumbai,Maintenance,Supervisor,2017-08-11
+DM1060,Rekha Sharma,Mumbai Central,HR,Senior Associate,2016-07-24
+DM1061,Riya Shah,Powai,IT Support,Associate,2019-12-13
+DM1062,Aarav Iyer,Andheri,Store Operations,Assistant Manager,2020-03-20
+DM1063,Ananya Menon,Thane,Store Operations,Senior Associate,2019-02-21
+DM1064,Sneha Verma,Mumbai Central,Store Operations,Supervisor,2021-08-04
+DM1065,Gauri Shah,Andheri,HR,Supervisor,2023-06-16
+DM1066,Akash Fernandes,Navi Mumbai,IT Support,Associate,2015-07-05
+DM1067,Chirag Sharma,Navi Mumbai,Store Operations,Manager,2016-05-07
+DM1068,Sneha Sharma,Navi Mumbai,Store Operations,Associate,2020-01-28
+DM1069,Manav Menon,Andheri,Store Operations,Supervisor,2020-12-09
+DM1070,Aditi Shah,Thane,Finance,Manager,2022-08-14
+DM1071,Tanvi Bhatt,Powai,Maintenance,Associate,2024-02-18
+DM1072,Suresh Shah,Andheri,Store Operations,Senior Associate,2020-11-10
+DM1073,Suresh Kulkarni,Powai,Finance,Supervisor,2019-07-04
+DM1074,Sameer Verma,Navi Mumbai,Merchandising,Associate,2024-01-09
+DM1075,Nikhil Sharma,Andheri,Finance,Supervisor,2017-09-13
+DM1076,Sameer Shah,Navi Mumbai,Store Operations,Manager,2018-09-12
+DM1077,Vidya Joshi,Mumbai Central,Maintenance,Associate,2016-08-22
+DM1078,Omkar Pawar,Navi Mumbai,Store Operations,Supervisor,2024-12-18
+DM1079,Chirag Bhatt,Mumbai Central,IT Support,Associate,2015-08-05
+DM1080,Tanvi Bhatt,Thane,Merchandising,Associate,2026-06-01
+DM1081,Meera Joshi,Navi Mumbai,IT Support,Associate,2017-04-21
+DM1082,Varun Fernandes,Mumbai Central,IT Support,Senior Associate,2025-06-26
+DM1083,Kiran Verma,Navi Mumbai,Store Operations,Manager,2025-02-07
+DM1084,Tanvi Fernandes,Thane,Maintenance,Senior Associate,2018-08-26
+DM1085,Vidya Khan,Powai,Maintenance,Senior Associate,2016-04-14
+DM1086,Sameer Menon,Thane,Finance,Associate,2021-07-31
+DM1087,Chirag Menon,Mumbai Central,Store Operations,Senior Associate,2018-05-27
+DM1088,Chirag Kulkarni,Mumbai Central,Store Operations,Supervisor,2020-08-14
+DM1089,Kunal Patil,Powai,HR,Senior Associate,2020-09-12
+DM1090,Zoya Rao,Powai,Store Operations,Senior Associate,2018-06-14
+DM1091,Varun Bhatt,Navi Mumbai,Finance,Associate,2019-03-28
+DM1092,Ananya Joshi,Thane,Store Operations,Senior Associate,2019-02-15
+DM1093,Tanvi Shinde,Powai,Store Operations,Senior Associate,2025-05-17
+DM1094,Farhan Nair,Powai,Merchandising,Supervisor,2016-08-30
+DM1095,Kavya Mehta,Mumbai Central,Merchandising,Associate,2024-03-21
+DM1096,Yash Nair,Mumbai Central,IT Support,Senior Associate,2020-01-15
+DM1097,Harsh Patil,Mumbai Central,Merchandising,Associate,2017-10-03
+DM1098,Sanya Shinde,Navi Mumbai,Store Operations,Senior Associate,2020-01-09
+DM1099,Kavya Joshi,Andheri,Store Operations,Senior Associate,2023-08-13
+DM1100,Neha Pawar,Andheri,Maintenance,Associate,2022-02-05
+DM1101,Akash Shah,Powai,Maintenance,Associate,2019-07-23
+DM1102,Varun Shinde,Navi Mumbai,Finance,Supervisor,2019-06-14
+DM1103,Kavya Shah,Andheri,Store Operations,Associate,2023-08-13
+DM1104,Vidya Patil,Powai,Finance,Supervisor,2016-10-25
+DM1105,Bhavna Bhatt,Powai,Finance,Associate,2017-08-30
+DM1106,Riya Pillai,Andheri,Store Operations,Associate,2018-04-03
+DM1107,Kiran Pawar,Navi Mumbai,Store Operations,Supervisor,2024-11-27
+DM1108,Ananya Joshi,Powai,Finance,Senior Associate,2024-11-07
+DM1109,Uday Sharma,Thane,IT Support,Assistant Manager,2016-07-21
+DM1110,Asha Patil,Navi Mumbai,Store Operations,Associate,2025-01-29
+DM1111,Arjun Chavan,Powai,Merchandising,Associate,2015-07-19
+DM1112,Neha Sharma,Thane,HR,Associate,2024-04-16
+DM1113,Sameer Joshi,Andheri,Store Operations,Senior Associate,2025-11-07
+DM1114,Neha Shinde,Mumbai Central,Store Operations,Associate,2015-10-03
+DM1115,Varun Gupta,Mumbai Central,Store Operations,Supervisor,2020-02-05
+DM1116,Aditi Pillai,Powai,Finance,Senior Associate,2016-06-28
+DM1117,Ananya Nair,Navi Mumbai,Merchandising,Associate,2024-11-10
+DM1118,Gauri Kulkarni,Thane,HR,Senior Associate,2026-04-16
+DM1119,Deepa Patil,Powai,Store Operations,Associate,2018-01-20
+DM1120,Manav Kulkarni,Navi Mumbai,Merchandising,Senior Associate,2019-01-26
+DM1121,Chirag Gupta,Navi Mumbai,HR,Supervisor,2023-03-23
+DM1122,Uday Sharma,Thane,Store Operations,Associate,2021-04-17
+DM1123,Farhan Shah,Powai,Finance,Associate,2016-03-15
+DM1124,Ishita Nair,Andheri,HR,Senior Associate,2022-11-10
+DM1125,Chirag Patil,Andheri,Maintenance,Associate,2022-04-06
+DM1126,Sneha Joshi,Navi Mumbai,Store Operations,Associate,2020-11-17
+DM1127,Pranav Khan,Andheri,Finance,Senior Associate,2016-07-19
+DM1128,Tushar Gupta,Thane,HR,Associate,2018-03-08
+DM1129,Varun Verma,Powai,Merchandising,Assistant Manager,2024-03-23
+DM1130,Rekha Patil,Andheri,Store Operations,Associate,2024-05-31
+DM1131,Rohan Nair,Thane,Finance,Associate,2026-01-15
+DM1132,Nikhil Pawar,Thane,Store Operations,Supervisor,2024-06-27
+DM1133,Zoya Shah,Powai,Finance,Associate,2018-07-12
+DM1134,Kunal Shinde,Powai,Maintenance,Supervisor,2022-08-05
+DM1135,Rohan Kulkarni,Mumbai Central,Merchandising,Associate,2020-10-16
+DM1136,Zoya Gupta,Navi Mumbai,Merchandising,Senior Associate,2017-08-06
+DM1137,Meera Shinde,Navi Mumbai,Maintenance,Associate,2020-12-01
+DM1138,Riya Patil,Powai,Maintenance,Manager,2022-08-07
+DM1139,Neha Nair,Powai,IT Support,Associate,2015-08-01
+DM1140,Chirag Shah,Navi Mumbai,Store Operations,Associate,2018-10-23
+DM1141,Yash Sharma,Thane,Store Operations,Associate,2017-11-17
+DM1142,Arjun Deshmukh,Thane,Store Operations,Associate,2019-04-04
+DM1143,Farhan Sharma,Powai,Maintenance,Associate,2017-08-07
+DM1144,Pranav Iyer,Mumbai Central,Store Operations,Supervisor,2020-03-11
+DM1145,Tushar Pillai,Mumbai Central,Maintenance,Assistant Manager,2019-06-28
+DM1146,Harsh Mehta,Powai,Store Operations,Senior Associate,2026-03-06
+DM1147,Asha Nair,Powai,Store Operations,Senior Associate,2017-12-01
+DM1148,Aditi Bhatt,Powai,IT Support,Senior Associate,2021-08-17
+DM1149,Rekha Chavan,Andheri,Store Operations,Associate,2022-08-05
+DM1150,Ananya Pillai,Mumbai Central,IT Support,Supervisor,2018-01-19
+DM1151,Jatin Deshmukh,Andheri,Maintenance,Associate,2024-08-15
+DM1152,Lata Verma,Thane,Store Operations,Associate,2015-09-04
+DM1153,Manav Pawar,Thane,Store Operations,Supervisor,2019-01-03
+DM1154,Pranav Rao,Mumbai Central,Store Operations,Senior Associate,2021-01-18
+DM1155,Pranav Verma,Thane,Store Operations,Associate,2019-11-08
+DM1156,Sneha Iyer,Andheri,Finance,Senior Associate,2016-11-07
+DM1157,Asha Bhatt,Mumbai Central,Store Operations,Senior Associate,2016-05-12
+DM1158,Tushar Pillai,Mumbai Central,Maintenance,Senior Associate,2021-01-19
+DM1159,Jatin Shah,Navi Mumbai,Store Operations,Associate,2023-06-28
+DM1160,Aditi Shah,Andheri,Maintenance,Associate,2021-11-07
+DM1161,Lata Bhatt,Thane,Store Operations,Supervisor,2020-10-27
+DM1162,Uday Bhatt,Mumbai Central,Store Operations,Senior Associate,2024-09-17
+DM1163,Omkar Khan,Navi Mumbai,Store Operations,Senior Associate,2024-05-07
+DM1164,Riya Menon,Andheri,Finance,Associate,2017-02-19
+DM1165,Farhan Khan,Andheri,Store Operations,Associate,2017-12-01
+DM1166,Omkar Shinde,Thane,Maintenance,Supervisor,2025-11-17
+DM1167,Uday Mehta,Thane,Store Operations,Associate,2020-11-22
+DM1168,Farhan Nair,Navi Mumbai,Store Operations,Supervisor,2016-06-19
+DM1169,Manav Pillai,Mumbai Central,IT Support,Senior Associate,2018-01-27
+DM1170,Sanya Gupta,Navi Mumbai,Store Operations,Associate,2022-08-11
+DM1171,Akash Pillai,Thane,Store Operations,Senior Associate,2016-02-28
+DM1172,Pranav Rao,Andheri,Maintenance,Associate,2019-09-28
+DM1173,Vidya Pawar,Mumbai Central,Merchandising,Associate,2026-01-06
+DM1174,Farhan Verma,Navi Mumbai,Finance,Associate,2017-01-06
+DM1175,Lata Bhatt,Thane,Store Operations,Senior Associate,2025-03-06
+DM1176,Deepa Khan,Powai,Merchandising,Associate,2026-01-08
+DM1177,Tushar Iyer,Navi Mumbai,Store Operations,Associate,2016-01-02
+DM1178,Pranav Kulkarni,Thane,Finance,Senior Associate,2025-01-02
+DM1179,Nikhil Sharma,Powai,Store Operations,Associate,2022-01-02
+DM1180,Kunal Deshmukh,Andheri,Store Operations,Associate,2024-07-31
+DM1181,Yash Deshmukh,Andheri,Store Operations,Associate,2021-06-21
+DM1182,Gauri Sharma,Navi Mumbai,Store Operations,Senior Associate,2020-02-04
+DM1183,Chirag Gupta,Navi Mumbai,HR,Senior Associate,2018-07-13
+DM1184,Yash Deshmukh,Powai,HR,Senior Associate,2023-10-03
+DM1185,Pranav Rao,Thane,Store Operations,Senior Associate,2019-01-11
+DM1186,Asha Patil,Mumbai Central,Store Operations,Manager,2020-01-03
+DM1187,Zoya Shah,Powai,Store Operations,Senior Associate,2022-04-08
+DM1188,Meera Fernandes,Navi Mumbai,Maintenance,Assistant Manager,2017-09-03
+DM1189,Deepa Joshi,Powai,Store Operations,Associate,2020-03-18
+DM1190,Aarav Mehta,Navi Mumbai,Merchandising,Associate,2023-10-09
+DM1191,Gauri Sharma,Andheri,Store Operations,Supervisor,2023-11-25
+DM1192,Gauri Chavan,Andheri,HR,Associate,2024-06-13
+DM1193,Akash Kulkarni,Thane,IT Support,Associate,2015-11-06
+DM1194,Varun Pawar,Thane,Store Operations,Senior Associate,2026-05-18
+DM1195,Tanvi Pawar,Andheri,Store Operations,Senior Associate,2019-12-30
+DM1196,Zoya Mehta,Mumbai Central,Finance,Assistant Manager,2018-09-18
+DM1197,Farhan Deshmukh,Mumbai Central,IT Support,Supervisor,2021-08-05
+DM1198,Ishita Iyer,Mumbai Central,HR,Senior Associate,2020-09-22
+DM1199,Ananya Pawar,Andheri,HR,Senior Associate,2017-02-26
+DM1200,Chirag Nair,Navi Mumbai,Merchandising,Senior Associate,2024-10-11
+DM1201,Bhavna Menon,Andheri,Store Operations,Assistant Manager,2019-02-20
+DM1202,Bhavna Gupta,Andheri,Merchandising,Supervisor,2025-12-26
+DM1203,Neha Bhatt,Thane,Merchandising,Senior Associate,2019-05-03
+DM1204,Jatin Patil,Powai,Finance,Associate,2020-07-25
+DM1205,Yash Pillai,Mumbai Central,Store Operations,Associate,2021-04-23
+DM1206,Zoya Pillai,Thane,Maintenance,Associate,2016-06-25
+DM1207,Suresh Gupta,Powai,Maintenance,Associate,2018-01-20
+DM1208,Akash Pawar,Thane,Merchandising,Senior Associate,2020-05-27
+DM1209,Ananya Menon,Thane,Maintenance,Supervisor,2025-01-23
+DM1210,Suresh Rao,Powai,Store Operations,Manager,2019-01-09
+DM1211,Arjun Menon,Thane,Store Operations,Senior Associate,2020-05-26
+DM1212,Yash Sharma,Navi Mumbai,Finance,Associate,2016-09-28
+DM1213,Arjun Bhatt,Navi Mumbai,Store Operations,Associate,2018-12-26
+DM1214,Zoya Deshmukh,Powai,Store Operations,Senior Associate,2025-06-24
+DM1215,Akash Shah,Mumbai Central,Store Operations,Associate,2026-04-05
+DM1216,Tushar Nair,Navi Mumbai,Store Operations,Associate,2020-03-08
+DM1217,Pranav Shah,Mumbai Central,Store Operations,Associate,2022-06-28
+DM1218,Neha Joshi,Andheri,Store Operations,Senior Associate,2023-07-22
+DM1219,Chirag Sharma,Powai,Store Operations,Associate,2025-09-18
+DM1220,Aditi Pillai,Andheri,Finance,Associate,2020-01-08
+DM1221,Neha Patil,Andheri,HR,Manager,2022-01-19
+DM1222,Aditi Nair,Thane,Merchandising,Senior Associate,2019-12-04
+DM1223,Kiran Bhatt,Powai,IT Support,Associate,2016-08-09
+DM1224,Meera Shah,Andheri,Store Operations,Associate,2019-04-11
+DM1225,Gauri Shah,Navi Mumbai,Store Operations,Associate,2026-04-14
+DM1226,Rohan Joshi,Mumbai Central,Finance,Associate,2022-11-24
+DM1227,Aarav Fernandes,Powai,Maintenance,Associate,2016-03-29
+DM1228,Imran Verma,Mumbai Central,Finance,Associate,2023-06-25
+DM1229,Varun Khan,Powai,Store Operations,Associate,2016-10-07
+DM1230,Imran Bhatt,Andheri,Finance,Associate,2021-12-06
+DM1231,Gauri Rao,Powai,IT Support,Senior Associate,2021-07-16
+DM1232,Sanya Kulkarni,Mumbai Central,Store Operations,Associate,2025-12-05
+DM1233,Riya Rao,Navi Mumbai,Finance,Manager,2024-12-02
+DM1234,Yash Sharma,Navi Mumbai,Store Operations,Associate,2026-02-24
+DM1235,Ishita Nair,Powai,Merchandising,Manager,2019-09-17
+DM1236,Kavya Kulkarni,Powai,Store Operations,Associate,2021-12-23
+DM1237,Jatin Gupta,Andheri,Store Operations,Associate,2022-06-16
+DM1238,Suresh Rao,Powai,Store Operations,Supervisor,2016-12-25
+DM1239,Tanvi Khan,Powai,Store Operations,Senior Associate,2015-09-10
+DM1240,Aditi Nair,Powai,Store Operations,Associate,2025-11-30
