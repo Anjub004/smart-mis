@@ -2,7 +2,7 @@
 
 **SmartMIS — Intelligent MIS Automation & Analytics Platform.** Upload Excel/CSV data, validate and clean it, calculate KPIs and SLA/TAT, detect potential anomalies, and publish formatted MIS reports, all from one configurable pipeline.
 
-> Status: **Phase 3 of 15 complete** (architecture, foundation, data ingestion, sample data). The full README ships in Phase 15.
+> Status: **Phase 4 of 15 complete** (architecture, foundation, data ingestion, sample data, validation and cleaning). The full README ships in Phase 15.
 
 ## Quick start
 
@@ -42,6 +42,28 @@ print(data.profile.columns_frame())
 
 New connectors register with `@register_source("name", extensions=(...))`.
 
+## Validation & cleaning
+
+```python
+from smartmis.validation import Validator
+from smartmis.cleaning import Cleaner
+
+report = Validator.from_config(config).validate(data.dataframe, "sales")
+print(report.render_text())      # DQ report: rows, missing %, duplicates, invalid dates/numbers, score
+report.raise_if_blocking()       # stops on missing required columns / score below threshold
+
+result = Cleaner.from_config(config).clean(data.dataframe, "sales")
+print(result.summary.render_text())   # Before / After / Removed / Modified
+result.data          # typed, clean rows
+result.quarantine    # removed rows, original values + _reason
+result.summary.change_log   # every modified cell: old → new
+```
+
+- **Validation** runs 12 configurable checks across five quality dimensions and computes a documented, weighted **Data Quality Score**. The method and a worked example are in [docs/validation-rules.md](docs/validation-rules.md).
+- **Cleaning** standardises headers, whitespace, placeholders, category spellings and data types. Rows that can't be fixed safely go to a quarantine table with the reason; nothing is silently deleted.
+- On the sample sales data, validation flags 330 invalid rows (score 99.9%). Cleaning quarantines exactly those 330, and the cleaned output re-validates at 100%.
+- At 500k rows, validation takes about 2 s and cleaning about 4 s.
+
 ## Sample data
 
 Fictional **DemoMart Retail** (5 Mumbai-area branches, 6 categories, 102 SKUs, Jul–Sep 2026). No real personal data.
@@ -68,6 +90,7 @@ On the ~500k-row CSV (42 MB), load plus profiling takes about 3.5 s.
 ## Documentation
 
 - [Architecture](docs/architecture.md): system design, data flow, database schema, roadmap
+- [Validation rules](docs/validation-rules.md): checks, Data Quality Score methodology, cleaning steps
 
 ## License
 

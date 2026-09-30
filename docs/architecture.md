@@ -382,7 +382,7 @@ DQ Score = Σ ( wᵢ × (1 − failed_cellsᵢ / checked_cellsᵢ) ) / Σ wᵢ  
 | Consistency | 0.15 | rule checks (e.g. qty ≥ 0, 0 ≤ pct ≤ 100) |
 | Conformity | 0.10 | schema: required columns present, no unexpected columns |
 
-Missing a required column zeroes Conformity and is also a **blocking** error. The score is therefore reproducible and explained in `docs/validation-rules.md`.
+Conformity is the share of required columns present, and a missing required column is also a **blocking** error. Dimensions with nothing to check are excluded and the weights re-normalised. The score is reproducible; the full method and a worked example are in [`docs/validation-rules.md`](validation-rules.md).
 
 ### 7.2 Working-hours TAT (vectorised)
 For each request, working seconds = `full working days between × day_length + partial first day + partial last day − holidays`, where timestamps are first **clamped** into working windows (before-hours → day start, after-hours/non-working day → next working day start). Business days are counted with `numpy.busday_count` using the configured weekmask and holiday array, so 500k rows compute in one array pass with no Python loop.

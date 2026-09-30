@@ -70,7 +70,12 @@ src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "C4", "PTH", "RUF", "BLE"]
-ignore = ["E501"]  # line length handled by Black
+ignore = [
+    "E501",   # line length handled by Black
+    "RUF001", # intentional typographic symbols (–, ×, −, →) in user-facing text
+    "RUF002",
+    "RUF003",
+]
 
 [tool.ruff.lint.isort]
 known-first-party = ["smartmis"]

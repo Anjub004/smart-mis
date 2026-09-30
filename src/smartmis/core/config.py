@@ -179,6 +179,43 @@ class ValidationSettings(_StrictModel):
     missing_value_threshold: float = Field(default=5, ge=0, le=100)
     blocking_quality_score: float = Field(default=50, ge=0, le=100)
     sample_issue_rows: int = Field(default=20, ge=0)
+    dayfirst: bool = True
+    issue_log_limit: int = Field(default=5_000, ge=0)
+
+
+CategoryCase = Literal["preserve", "title", "upper", "lower"]
+
+
+class CleaningConfig(_StrictModel):
+    """Which cleaning steps run. Every change is logged; nothing is silently altered."""
+
+    standardize_column_names: bool = True
+    trim_whitespace: bool = True
+    placeholder_values: tuple[str, ...] = (
+        "n/a",
+        "na",
+        "null",
+        "none",
+        "-",
+        "--",
+        "?",
+        "tbd",
+        "#n/a",
+        "#value!",
+        "#ref!",
+        "nan",
+    )
+    remove_duplicate_rows: bool = True
+    duplicate_keys: Literal["quarantine", "keep"] = "quarantine"
+    standardize_categories: bool = True
+    category_case: CategoryCase = "preserve"
+    invalid_rows: Literal["quarantine", "keep"] = "quarantine"
+    change_log_limit: int = Field(default=5_000, ge=0)
+
+    @field_validator("placeholder_values")
+    @classmethod
+    def _lower(cls, value: tuple[str, ...]) -> tuple[str, ...]:
+        return tuple(v.strip().lower() for v in value)
 
 
 AnomalyMethod = Literal["iqr", "zscore", "rolling", "pct_change"]
@@ -218,6 +255,7 @@ class SettingsFile(_StrictModel):
     holidays_file: Path | None = Path("data/sample/holidays.csv")
     sla: SLAConfig = SLAConfig()
     validation: ValidationSettings = ValidationSettings()
+    cleaning: CleaningConfig = CleaningConfig()
     anomaly: AnomalyConfig = AnomalyConfig()
     reporting: ReportingConfig = ReportingConfig()
     features: FeaturesConfig = FeaturesConfig()
@@ -285,6 +323,14 @@ class ColumnRule(_StrictModel):
     min: float | None = None
     max: float | None = None
     allowed: tuple[str, ...] | None = None
+    aliases: tuple[str, ...] = ()
+    default: float | str | None = None
+
+    @model_validator(mode="after")
+    def _default_only_for_optional(self) -> ColumnRule:
+        if self.default is not None and self.required:
+            raise ValueError("a default value is only allowed on optional columns")
+        return self
 
     @model_validator(mode="after")
     def _min_le_max(self) -> ColumnRule:
@@ -301,17 +347,33 @@ class ColumnRule(_StrictModel):
         return self.type in {"date", "datetime"}
 
 
+class ConsistencyRule(_StrictModel):
+    """Cross-column rule, e.g. ``completed_at`` must not be before ``created_at``."""
+
+    type: Literal["not_before", "not_after"]
+    column: str
+    reference: str
+    description: str = ""
+
+
 class DatasetSchema(_StrictModel):
     description: str = ""
     business_key: tuple[str, ...] = ()
     allow_unexpected_columns: bool = True
     columns: dict[str, ColumnRule]
+    consistency_rules: tuple[ConsistencyRule, ...] = ()
 
     @model_validator(mode="after")
     def _key_columns_exist(self) -> DatasetSchema:
         missing = [col for col in self.business_key if col not in self.columns]
         if missing:
             raise ValueError(f"business_key columns not defined in columns: {missing}")
+        for rule in self.consistency_rules:
+            for col in (rule.column, rule.reference):
+                if col not in self.columns:
+                    raise ValueError(f"consistency rule column '{col}' not defined in columns")
+                if not self.columns[col].is_temporal and not self.columns[col].is_numeric:
+                    raise ValueError(f"consistency rule column '{col}' must be numeric or a date")
         return self
 
     @property

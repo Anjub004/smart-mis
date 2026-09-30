@@ -20,15 +20,15 @@ datasets:
     business_key: [invoice_no, sku]
     allow_unexpected_columns: true
     columns:
-      invoice_no:    { type: string,   required: true }
-      invoice_date:  { type: date,     required: true }
+      invoice_no:    { type: string,   required: true, aliases: [invoice_number, bill_no] }
+      invoice_date:  { type: date,     required: true, aliases: [bill_date, date] }
       branch:        { type: category, required: true }
       category:      { type: category, required: true }
       sku:           { type: string,   required: true }
       product_name:  { type: string,   required: false }
-      quantity:      { type: integer,  required: true, min: 0 }
-      unit_price:    { type: float,    required: true, min: 0 }
-      discount_pct:  { type: percent,  required: false, min: 0, max: 100 }
+      quantity:      { type: integer,  required: true, min: 0, aliases: [qty] }
+      unit_price:    { type: float,    required: true, min: 0, aliases: [price, mrp] }
+      discount_pct:  { type: percent,  required: false, min: 0, max: 100, default: 0, aliases: [discount] }
       cost_price:    { type: float,    required: false, min: 0 }
 
   inventory:
@@ -50,7 +50,7 @@ datasets:
     business_key: [request_id]
     allow_unexpected_columns: true
     columns:
-      request_id:     { type: string,   required: true }
+      request_id:     { type: string,   required: true, aliases: [ticket_id, request_no] }
       branch:         { type: category, required: true }
       department:     { type: category, required: true }
       priority:       { type: category, required: true, allowed: [critical, high, medium, low] }
@@ -58,6 +58,11 @@ datasets:
       completed_at:   { type: datetime, required: false }
       status:         { type: category, required: true, allowed: [open, in_progress, completed, cancelled] }
       order_value:    { type: float,    required: false, min: 0 }
+    consistency_rules:
+      - type: not_before
+        column: completed_at
+        reference: created_at
+        description: A request cannot be completed before it was created
 
   employees:
     description: Fictional staff directory (no real PII)

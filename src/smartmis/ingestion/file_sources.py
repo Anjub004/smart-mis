@@ -137,7 +137,10 @@ class CSVDataSource(FileDataSource):
                 names=list(range(width)),
                 dtype=str,
                 skip_blank_lines=True,
-                keep_default_na=True,
+                # Only truly empty cells are missing. Placeholders such as "N/A" are
+                # kept as text so the cleaning stage converts them visibly (logged).
+                keep_default_na=False,
+                na_values=[""],
             )
         except pd.errors.ParserError as exc:
             raise DataSourceError(

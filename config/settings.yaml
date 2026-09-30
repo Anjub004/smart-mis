@@ -59,6 +59,22 @@ validation:
   missing_value_threshold: 5      # % missing in a column that raises a warning
   blocking_quality_score: 50      # below this score processing stops
   sample_issue_rows: 20           # max example rows shown per failed check
+  dayfirst: true                  # 01/08/2026 = 1 Aug 2026 (set false for US month-first)
+  issue_log_limit: 5000           # max individual issues kept for display/export
+
+# --- Cleaning ----------------------------------------------------------------
+# Every change is recorded in the change log. Rows that cannot be fixed safely
+# are moved to a quarantine sheet with the reason — never silently deleted.
+cleaning:
+  standardize_column_names: true  # "Invoice No " -> invoice_no
+  trim_whitespace: true           # "  Powai " -> "Powai"
+  placeholder_values: ["n/a", "na", "null", "none", "-", "--", "?", "tbd", "#n/a", "#value!", "#ref!", "nan"]
+  remove_duplicate_rows: true     # exact duplicates (all columns identical)
+  duplicate_keys: quarantine      # quarantine | keep   (same business key, different values)
+  standardize_categories: true    # "POWAI", " powai " -> "Powai" (most common spelling wins)
+  category_case: preserve         # preserve | title | upper | lower
+  invalid_rows: quarantine        # quarantine | keep
+  change_log_limit: 5000
 
 # --- Anomaly detection -------------------------------------------------------
 anomaly:
