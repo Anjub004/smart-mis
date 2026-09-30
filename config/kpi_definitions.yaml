@@ -1,0 +1,218 @@
+# =============================================================================
+# SmartMIS — KPI catalogue
+# Human-readable definitions. The KPI engine reads this file to label, format
+# and document every KPI it calculates. `code` links to the implementation.
+# unit: currency | pct | count | days | hours | ratio
+# =============================================================================
+
+kpis:
+  # ---------------------------------------------------------------- Sales ---
+  - code: total_sales
+    group: sales
+    name: Total Sales
+    description: Gross sales value before discount
+    formula: "SUM(quantity × unit_price)"
+    input_columns: [quantity, unit_price]
+    unit: currency
+    business_meaning: Top-line demand captured across all branches.
+
+  - code: net_sales
+    group: sales
+    name: Net Sales
+    description: Sales value after line discounts
+    formula: "SUM(quantity × unit_price × (1 − discount_pct/100))"
+    input_columns: [quantity, unit_price, discount_pct]
+    unit: currency
+    business_meaning: Revenue actually realised.
+
+  - code: sales_growth_pct
+    group: sales
+    name: Sales Growth %
+    description: Net sales change versus the previous period of equal length
+    formula: "(Net Sales current − Net Sales previous) / Net Sales previous × 100"
+    input_columns: [invoice_date, net_sales]
+    unit: pct
+    business_meaning: Momentum of the business period over period.
+
+  - code: order_count
+    group: sales
+    name: Number of Orders
+    description: Distinct invoices
+    formula: "COUNT(DISTINCT invoice_no)"
+    input_columns: [invoice_no]
+    unit: count
+    business_meaning: Footfall converted into transactions.
+
+  - code: avg_order_value
+    group: sales
+    name: Average Order Value
+    description: Net sales per invoice
+    formula: "Net Sales / Number of Orders"
+    input_columns: [net_sales, invoice_no]
+    unit: currency
+    business_meaning: Basket size — lever for upselling and bundling.
+
+  - code: units_sold
+    group: sales
+    name: Units Sold
+    description: Total quantity sold
+    formula: "SUM(quantity)"
+    input_columns: [quantity]
+    unit: count
+    business_meaning: Volume moved, independent of price.
+
+  - code: avg_selling_price
+    group: sales
+    name: Average Selling Price
+    description: Net sales per unit
+    formula: "Net Sales / Units Sold"
+    input_columns: [net_sales, quantity]
+    unit: currency
+    business_meaning: Price realisation after discounts.
+
+  # ------------------------------------------------------------ Inventory ---
+  - code: stock_quantity
+    group: inventory
+    name: Stock Quantity
+    description: Units on hand at the latest snapshot
+    formula: "SUM(stock_qty) at latest snapshot_date"
+    input_columns: [stock_qty, snapshot_date]
+    unit: count
+    business_meaning: Physical stock available to sell.
+
+  - code: stock_value
+    group: inventory
+    name: Stock Value
+    description: Stock on hand valued at cost
+    formula: "SUM(stock_qty × unit_cost)"
+    input_columns: [stock_qty, unit_cost]
+    unit: currency
+    business_meaning: Working capital tied up in inventory.
+
+  - code: stock_days
+    group: inventory
+    name: Stock Days
+    description: Days of cover at current sales rate
+    formula: "SUM(stock_qty) / SUM(avg_daily_sales)"
+    input_columns: [stock_qty, avg_daily_sales]
+    unit: days
+    business_meaning: How long stock lasts without replenishment.
+
+  - code: out_of_stock_pct
+    group: inventory
+    name: Out-of-Stock %
+    description: Share of branch-SKU lines at or below the stockout threshold
+    formula: "COUNT(stock_qty ≤ threshold) / COUNT(lines) × 100"
+    input_columns: [stock_qty]
+    unit: pct
+    business_meaning: Lost-sales risk and shelf availability.
+
+  - code: slow_moving_items
+    group: inventory
+    name: Slow Moving Items
+    description: Lines with no sale within the slow-moving window
+    formula: "COUNT(snapshot_date − last_sale_date > slow_moving_days)"
+    input_columns: [snapshot_date, last_sale_date]
+    unit: count
+    business_meaning: Candidates for markdown, transfer or delisting.
+
+  - code: inventory_turnover
+    group: inventory
+    name: Inventory Turnover
+    description: Annualised cost of goods sold over stock value
+    formula: "(SUM(avg_daily_sales × unit_cost) × 365) / Stock Value"
+    input_columns: [avg_daily_sales, unit_cost, stock_qty]
+    unit: ratio
+    business_meaning: How efficiently inventory converts into sales.
+
+  # --------------------------------------------------------------- Margin ---
+  - code: total_cost
+    group: margin
+    name: Cost
+    description: Cost of goods sold
+    formula: "SUM(quantity × cost_price)"
+    input_columns: [quantity, cost_price]
+    unit: currency
+    business_meaning: Direct product cost of what was sold.
+
+  - code: gross_profit
+    group: margin
+    name: Gross Profit
+    description: Net sales minus cost of goods sold
+    formula: "Net Sales − Cost"
+    input_columns: [net_sales, cost_price, quantity]
+    unit: currency
+    business_meaning: Money available to cover operating expenses.
+
+  - code: gross_margin_pct
+    group: margin
+    name: Gross Margin %
+    description: Gross profit as a share of net sales
+    formula: "Gross Profit / Net Sales × 100"
+    input_columns: [net_sales, cost_price, quantity]
+    unit: pct
+    business_meaning: Profitability of the product mix.
+
+  - code: avg_margin_pct
+    group: margin
+    name: Average Margin %
+    description: Simple average of line-level margin %
+    formula: "MEAN((line net − line cost) / line net × 100)"
+    input_columns: [net_sales, cost_price, quantity]
+    unit: pct
+    business_meaning: Typical margin per line, unweighted by value.
+
+  # ----------------------------------------------------------- Operations ---
+  - code: total_requests
+    group: operations
+    name: Total Requests
+    description: Requests raised, excluding cancelled
+    formula: "COUNT(request_id WHERE status ≠ cancelled)"
+    input_columns: [request_id, status]
+    unit: count
+    business_meaning: Operational workload.
+
+  - code: completed_requests
+    group: operations
+    name: Completed Requests
+    description: Requests with status completed
+    formula: "COUNT(status = completed)"
+    input_columns: [status]
+    unit: count
+    business_meaning: Throughput delivered.
+
+  - code: pending_requests
+    group: operations
+    name: Pending Requests
+    description: Requests still open or in progress
+    formula: "COUNT(status IN (open, in_progress))"
+    input_columns: [status]
+    unit: count
+    business_meaning: Backlog needing attention.
+
+  - code: completion_pct
+    group: operations
+    name: Completion %
+    description: Completed over total requests
+    formula: "Completed Requests / Total Requests × 100"
+    input_columns: [status]
+    unit: pct
+    business_meaning: Closure rate of the team.
+
+  - code: avg_tat_hours
+    group: operations
+    name: Average TAT
+    description: Mean working-hours turnaround for completed requests
+    formula: "MEAN(working_tat_hours WHERE completed)"
+    input_columns: [created_at, completed_at]
+    unit: hours
+    business_meaning: Speed of service within business hours.
+
+  - code: sla_compliance_pct
+    group: operations
+    name: SLA Compliance %
+    description: Completed requests within their priority SLA
+    formula: "COUNT(working_tat ≤ sla_target) / COUNT(completed) × 100"
+    input_columns: [created_at, completed_at, priority]
+    unit: pct
+    business_meaning: Reliability against service commitments.

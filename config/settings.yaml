@@ -1,0 +1,85 @@
+# =============================================================================
+# SmartMIS — application settings
+# Edit values here; no code changes needed. Secrets belong in .env, not here.
+# =============================================================================
+
+application:
+  name: SmartMIS
+  title: "SmartMIS — Intelligent MIS Automation & Analytics Platform"
+  company: DemoMart Retail
+  currency_symbol: "₹"
+  timezone: Asia/Kolkata
+  date_format: "%d %b %Y"
+  datetime_format: "%d %b %Y %H:%M"
+
+paths:
+  sample_data: data/sample
+  processed_data: data/processed
+  reports: reports
+  logs: logs
+  database_file: data/smartmis.db
+
+upload:
+  allowed_extensions: [".csv", ".xlsx"]
+  max_file_size_mb: 200
+  csv_encoding_fallbacks: ["utf-8", "utf-8-sig", "cp1252", "latin-1"]
+
+logging:
+  file_name: smartmis.log
+  max_bytes: 5242880        # 5 MB per file
+  backup_count: 5
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+
+# --- Working calendar (used by the TAT / SLA engine) ------------------------
+working_hours:
+  start: "08:00"
+  end: "17:00"
+
+working_days:
+  monday: true
+  tuesday: true
+  wednesday: true
+  thursday: true
+  friday: true
+  saturday: true
+  sunday: false
+
+holidays_file: data/sample/holidays.csv
+
+# SLA target in WORKING hours, per priority
+sla:
+  critical: 2
+  high: 4
+  medium: 8
+  low: 24
+
+# --- Validation --------------------------------------------------------------
+validation:
+  duplicate_check: true
+  missing_value_threshold: 5      # % missing in a column that raises a warning
+  blocking_quality_score: 50      # below this score processing stops
+  sample_issue_rows: 20           # max example rows shown per failed check
+
+# --- Anomaly detection -------------------------------------------------------
+anomaly:
+  method: iqr                     # iqr | zscore | rolling | pct_change
+  iqr_multiplier: 1.5
+  zscore_threshold: 3.0
+  rolling_window: 7
+  rolling_threshold_pct: 50
+  pct_change_threshold: 100
+  min_observations: 5
+
+# --- Reporting ---------------------------------------------------------------
+reporting:
+  top_n: 10
+  slow_moving_days: 60
+  file_prefix: SmartMIS
+  include_raw_data_sheet: true
+  raw_data_row_limit: 100000      # Excel sheet cap to keep workbooks usable
+
+# --- Optional features -------------------------------------------------------
+features:
+  google_sheets: true             # activates only when credentials exist
+  ai_analysis: true               # activates only when AI_API_KEY exists
+  email: true                     # activates only when SMTP_HOST is set

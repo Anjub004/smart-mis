@@ -1,0 +1,26 @@
+# =============================================================================
+# SmartMIS — business rules
+# Thresholds that decide what counts as an "exception" in MIS reports.
+# =============================================================================
+
+rules:
+  sales:
+    negative_sales_allowed: false     # returns must be booked separately
+    max_discount_percent: 40          # discounts above this are flagged
+    zero_price_allowed: false
+
+  inventory:
+    stockout_threshold: 0             # stock_qty <= this → stockout
+    low_stock_days: 7                 # cover below this many days → low stock
+    overstock_days: 120               # cover above this → overstock
+    slow_moving_days: 60              # no sale for this many days → slow moving
+
+  margin:
+    minimum_margin_percent: 10        # below → low-margin exception
+    negative_margin_allowed: false
+
+  order:
+    high_value_threshold: 100000      # orders at/above this are flagged for review
+
+  operations:
+    pending_age_warning_hours: 24     # open requests older than this (working hours)

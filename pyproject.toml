@@ -1,0 +1,103 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartmis"
+version = "0.1.0"
+description = "SmartMIS — Intelligent MIS Automation & Analytics Platform"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "SmartMIS Contributors" }]
+keywords = ["mis", "analytics", "reporting", "kpi", "sla", "streamlit", "data-quality"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "SQLAlchemy>=2.0",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "python-dotenv>=1.0",
+    "PyYAML>=6.0",
+    "openpyxl>=3.1",
+    "plotly>=5.20",
+    "streamlit>=1.35",
+    "typer>=0.12",
+    "Jinja2>=3.1",
+    "reportlab>=4.1",
+]
+
+[project.optional-dependencies]
+gsheets = ["gspread>=6.0", "google-auth>=2.28"]
+ai = ["anthropic>=0.40"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "black>=24.4",
+    "mypy>=1.10",
+    "pandas-stubs>=2.2",
+    "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+smartmis = "smartmis.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+smartmis = ["notifications/templates/*.html", "ui/styles/*.css"]
+
+# ---------------------------------------------------------------- tooling ---
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "C4", "PTH", "RUF", "BLE"]
+ignore = ["E501"]  # line length handled by Black
+
+[tool.ruff.lint.isort]
+known-first-party = ["smartmis"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+packages = ["smartmis"]
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["smartmis.ui.*"]
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra --strict-markers"
+markers = [
+    "slow: large-dataset performance tests (deselect with -m 'not slow')",
+    "integration: end-to-end pipeline tests",
+]
+
+[tool.coverage.run]
+source = ["smartmis"]
+omit = ["src/smartmis/ui/*"]

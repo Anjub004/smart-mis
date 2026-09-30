@@ -1,0 +1,89 @@
+# =============================================================================
+# SmartMIS — dataset schemas & validation rules
+#
+# column types: string | integer | float | date | datetime | category | percent
+# Each dataset defines the columns it needs, which columns uniquely identify a
+# record (business_key) and any value rules.
+# =============================================================================
+
+# Data Quality Score weights (must sum to 1.0). See docs/validation-rules.md.
+quality_score_weights:
+  completeness: 0.30
+  validity: 0.25
+  uniqueness: 0.20
+  consistency: 0.15
+  conformity: 0.10
+
+datasets:
+  sales:
+    description: Line-level sales transactions
+    business_key: [invoice_no, sku]
+    allow_unexpected_columns: true
+    columns:
+      invoice_no:    { type: string,   required: true }
+      invoice_date:  { type: date,     required: true }
+      branch:        { type: category, required: true }
+      category:      { type: category, required: true }
+      sku:           { type: string,   required: true }
+      product_name:  { type: string,   required: false }
+      quantity:      { type: integer,  required: true, min: 0 }
+      unit_price:    { type: float,    required: true, min: 0 }
+      discount_pct:  { type: percent,  required: false, min: 0, max: 100 }
+      cost_price:    { type: float,    required: false, min: 0 }
+
+  inventory:
+    description: Stock snapshot per branch and SKU
+    business_key: [snapshot_date, branch, sku]
+    allow_unexpected_columns: true
+    columns:
+      snapshot_date:   { type: date,     required: true }
+      branch:          { type: category, required: true }
+      sku:             { type: string,   required: true }
+      category:        { type: category, required: true }
+      stock_qty:       { type: integer,  required: true, min: 0 }
+      unit_cost:       { type: float,    required: true, min: 0 }
+      avg_daily_sales: { type: float,    required: false, min: 0 }
+      last_sale_date:  { type: date,     required: false }
+
+  orders:
+    description: Operational requests / tickets with timestamps
+    business_key: [request_id]
+    allow_unexpected_columns: true
+    columns:
+      request_id:     { type: string,   required: true }
+      branch:         { type: category, required: true }
+      department:     { type: category, required: true }
+      priority:       { type: category, required: true, allowed: [critical, high, medium, low] }
+      created_at:     { type: datetime, required: true }
+      completed_at:   { type: datetime, required: false }
+      status:         { type: category, required: true, allowed: [open, in_progress, completed, cancelled] }
+      order_value:    { type: float,    required: false, min: 0 }
+
+  employees:
+    description: Fictional staff directory (no real PII)
+    business_key: [employee_id]
+    allow_unexpected_columns: true
+    columns:
+      employee_id: { type: string,   required: true }
+      name:        { type: string,   required: true }
+      branch:      { type: category, required: true }
+      department:  { type: category, required: true }
+      join_date:   { type: date,     required: true }
+
+  branches:
+    description: Branch master
+    business_key: [branch]
+    allow_unexpected_columns: true
+    columns:
+      branch:      { type: string, required: true }
+      region:      { type: category, required: true }
+      open_date:   { type: date,   required: false }
+      area_sqft:   { type: integer, required: false, min: 0 }
+
+  holidays:
+    description: Non-working dates for TAT calculation
+    business_key: [holiday_date]
+    allow_unexpected_columns: true
+    columns:
+      holiday_date: { type: date,   required: true }
+      holiday_name: { type: string, required: false }
